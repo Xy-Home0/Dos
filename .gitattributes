@@ -1,3 +1,0 @@
-dos-be.zip filter=lfs diff=lfs merge=lfs -text
-dos-be filter=lfs diff=lfs merge=lfs -text
-dos-fe filter=lfs diff=lfs merge=lfs -text
