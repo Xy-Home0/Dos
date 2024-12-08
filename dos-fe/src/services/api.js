@@ -1,9 +1,7 @@
 const API_URL = 'http://localhost:8000/api';
 
 const defaultHeaders = {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'X-Requested-With': 'XMLHttpRequest'
+    'Content-Type': 'application/json'
 };
 
 // Authentication API calls
@@ -11,7 +9,7 @@ export const loginUser = async (credentials) => {
     const response = await fetch(`${API_URL}/login`, {
         method: 'POST',
         headers: {
-            ...defaultHeaders
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify(credentials),
     });
@@ -22,7 +20,7 @@ export const registerUser = async (userData) => {
     const response = await fetch(`${API_URL}/register`, {
         method: 'POST',
         headers: {
-            ...defaultHeaders
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify(userData),
     });
@@ -46,7 +44,6 @@ export const getCart = async (token) => {
     const response = await fetch(`${API_URL}/cart`, {
         headers: {
             'Authorization': `Bearer ${token}`,
-            ...defaultHeaders
         },
     });
     return response.json();
@@ -56,7 +53,7 @@ export const addToCart = async (productId, quantity, token) => {
     const response = await fetch(`${API_URL}/cart`, {
         method: 'POST',
         headers: {
-            ...defaultHeaders,
+            'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify({ product_id: productId, quantity }),
@@ -69,7 +66,7 @@ export const checkout = async (orderData, token) => {
     const response = await fetch(`${API_URL}/orders`, {
         method: 'POST',
         headers: {
-            ...defaultHeaders,
+            'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify(orderData),
