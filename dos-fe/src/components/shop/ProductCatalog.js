@@ -35,14 +35,7 @@ const ProductCatalog = () => {
             if (filters.category) params.append('category', filters.category);
             if (filters.maxPrice) params.append('max_price', filters.maxPrice);
             
-            const response = await fetch(url + params.toString(), {
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'X-Requested-With': 'XMLHttpRequest'
-                },
-                credentials: 'include'
-            });
+            const response = await fetch(url + params.toString());
             const data = await response.json();
             const products = data.products || [];
             
